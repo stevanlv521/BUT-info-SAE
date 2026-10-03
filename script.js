@@ -107,7 +107,7 @@ popup.addEventListener("click", function (evenement) {
 
 //met le chemin de l'onglet 1 ici ou juste change les noms
 var PAGES = {
-  1: 'Onglet1/onglet1.html',
+  1: 'onglet1/onglet1.html',
   2: 'Onglet2/Onglet_2.html',
   3: 'Onglet3/onglet3.html',
   4: 'Onglet4/Onglet4.html',
