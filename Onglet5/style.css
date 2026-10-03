@@ -1,0 +1,85 @@
+/* ===== onglet5.css : styles propres à l'onglet 5 ===== */
+
+/* Zone principale (fond de l'accueil) */
+
+.scene {
+  position: relative;
+  overflow: hidden;
+  padding: 40px 20px 70px;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(80,125,85,.55), transparent 45%),
+    radial-gradient(circle at 95% 95%, rgba(120,100,40,.55), transparent 40%),
+    var(--vert-fonce);
+}
+.scene::before, .scene::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.scene::before { width: 900px; height: 900px; }
+.scene::after  { width: 1250px; height: 1250px; }
+
+.contenu { position: relative; z-index: 1; max-width: 960px; margin: 0 auto; }
+
+/* Rond numéro de l'onglet */
+.rond {
+  display: grid; place-items: center;
+  width: 64px; height: 64px;
+  margin: 0 auto 34px;
+  font-size: 1.8rem; font-weight: 700;
+  color: #fff; background: var(--orange);
+  border-radius: 50%;
+  box-shadow: 0 8px 22px rgba(0,0,0,.3);
+}
+
+/* Cartes */
+h2 {
+  font-size: 1.6rem;
+  margin-bottom: 16px;
+  padding-left: 14px;
+  border-left: 5px solid var(--orange);
+}
+.carte {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 20px;
+  padding: 28px 32px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+  animation: apparition .8s ease both;
+}
+.carte p + p { margin-top: 12px; }
+.carte strong { color: var(--orange); }
+
+.espace { height: 44px; }
+
+/* Vidéo horizontale 16:9 */
+.cadre-video {
+  padding: 12px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 22px;
+  box-shadow: 0 14px 34px rgba(0,0,0,.35);
+  animation: apparition 1s ease both;
+}
+.cadre-video video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 14px;
+}
+.legende { text-align: center; margin-top: 10px; font-size: .95rem; opacity: .85; }
+
+@keyframes apparition {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 700px) {
+  .carte { padding: 20px; }
+}

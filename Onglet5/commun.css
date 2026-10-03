@@ -1,0 +1,89 @@
+/* ===== commun.css : partagé par tous les onglets (en-tête, pied de page, couleurs) ===== */
+:root {
+  --vert-fonce: #1d3222;
+  --vert-footer: #172a1c;
+  --vert-clair: #3b5c40;
+  --orange: #d98a3d;
+  --texte: #f2f5ef;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--vert-footer);
+  color: var(--texte);
+  line-height: 1.6;
+}
+
+/* ===== En-tête ===== */
+.entete {
+  display: flex;
+  align-items: center;   /* aligne verticalement logos et titre */
+  gap: 24px;             /* espace entre les logos et le titre */
+}
+
+header h1 {
+  flex: 0.86;              /* occupe 86% de la largeur disponible */
+  text-align: center;
+}
+header {
+  background: var(--vert-fonce);
+  padding: 24px 64px 36px;
+}
+.logos {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  background: #fff;
+  padding: 10px 22px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+}
+.logos img { height: 44px; width: auto; display: block; }
+header h1 { font-size: 2.2rem;}
+header p { margin-top: 12px; max-width: 420px; font-size: 1.1rem; opacity: .95; }
+
+/* ===== Barre des onglets du site (collée en haut) ===== */
+.nav-onglets {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  gap: 8px;
+  padding: 12px 64px;
+  overflow-x: auto;          /* sur mobile, la barre défile sur le côté */
+  background: var(--vert-footer);
+  border-bottom: 3px solid var(--orange);
+}
+.nav-onglets a {
+  flex: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, .85);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .2s ease;
+}
+.nav-onglets a:hover { background: rgba(255, 255, 255, .12); }
+.nav-onglets a[aria-current="page"] { background: #fff; color: var(--vert-fonce); }
+
+/* ===== Pied de page ===== */
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 24px;
+  padding: 34px 40px;
+  background: var(--vert-footer);
+  border-top: 3px solid var(--orange);
+  font-size: .95rem;
+}
+footer .apropos { border-left: 3px solid var(--orange); padding-left: 16px; max-width: 420px; }
+footer .apropos strong { display: block; margin-bottom: 4px; }
+
+@media (max-width: 700px) {
+  .nav-onglets { padding: 12px 22px; }
+  header { padding: 20px 22px 28px; }
+  footer { padding: 24px 22px; }
+}

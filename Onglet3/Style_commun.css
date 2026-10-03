@@ -1,0 +1,276 @@
+/* ===========================================================
+   COMMUN.CSS : le style partagé par TOUTES les pages du site
+   (accueil + les 5 onglets). On le charge en premier dans
+   chaque page :
+
+     <link rel="stylesheet" href="commun.css">
+     <link rel="stylesheet" href="style.css">     (accueil seulement)
+
+   Comme ça, si tu changes une couleur ici, tout le site change.
+   =========================================================== */
+
+/* ===========================================================
+   VARIABLES DE COULEUR
+   Palette : vert forêt + une seule touche d'orange (celle du
+   soleil sur la photo de forêt).
+   =========================================================== */
+:root {
+  --vert-foret: #12351f;   /* fond principal */
+  --vert-sombre: #0c2616;  /* pied de page, barre de navigation */
+  --vert-clair: #3f7d4e;   /* lueur douce du fond */
+  --orange: #f08a24;       /* la touche de couleur : à utiliser avec parcimonie */
+  --blanc: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  color: var(--blanc);
+  background: var(--vert-foret);
+}
+
+/* Anneau orange bien visible quand on navigue au clavier */
+:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+
+/* ===========================================================
+   EN-TÊTE (logos + "Éco Vert")
+   - .site-header            : grande version (page d'accueil)
+   - .site-header--compact   : version plus petite (les onglets)
+   =========================================================== */
+.site-header {
+  position: relative;
+  padding: 7rem clamp(1.25rem, 5vw, 4rem) 2.5rem;
+  background-image:
+    linear-gradient(180deg, rgba(10, 40, 22, 0.2) 0%, var(--vert-foret) 100%),
+    url("foret.png");
+  background-size: cover;
+  background-position: center 35%;
+}
+
+/* Les deux logos sont posés sur une pastille blanche pour rester lisibles */
+.logos {
+  position: absolute;
+  top: 1rem;
+  left: clamp(1.25rem, 5vw, 4rem);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--blanc);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.logo {
+  height: 52px;
+  width: auto;          /* on garde les proportions du logo */
+  display: block;
+}
+
+.site-title {
+  color: var(--blanc);
+  font-size: clamp(3.5rem, 11vw, 8.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Sur les onglets, le titre est un lien qui ramène à l'accueil */
+.site-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-baseline {
+  max-width: 34ch;
+  margin-top: 1rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Version compacte pour les onglets */
+.site-header--compact {
+  padding-top: 5.5rem;
+  padding-bottom: 1.25rem;
+}
+
+.site-header--compact .site-title {
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+}
+
+/* ===========================================================
+   BARRE DE NAVIGATION ENTRE LES ONGLETS
+   Reste collée en haut de l'écran quand on descend.
+   L'onglet en cours porte aria-current="page" dans le HTML.
+   =========================================================== */
+.nav-onglets {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem clamp(1.25rem, 5vw, 4rem);
+  overflow-x: auto;              /* sur mobile, la barre défile sur le côté */
+  background: var(--vert-sombre);
+  border-bottom: 3px solid var(--orange);
+}
+
+.nav-onglets a {
+  flex: none;                    /* les liens ne se compressent pas */
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.nav-onglets a:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.nav-onglets a[aria-current="page"] {
+  background: var(--blanc);
+  color: var(--vert-foret);
+}
+
+/* ===========================================================
+   CONTENU D'UN ONGLET
+   .fond-vert : le même fond que l'accueil (deux lueurs)
+   .contenu   : colonne centrée et lisible
+   =========================================================== */
+.fond-vert {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(63, 125, 78, 0.55), transparent 45%),
+    radial-gradient(circle at 90% 95%, rgba(240, 138, 36, 0.2), transparent 40%),
+    var(--vert-foret);
+}
+
+.contenu {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+}
+
+.contenu h1 {
+  margin-bottom: 1rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.contenu h2 {
+  margin: 2.5rem 0 0.75rem;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 700;
+}
+
+.contenu p {
+  max-width: 68ch;               /* lignes courtes = texte facile à lire */
+  margin-bottom: 1rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.contenu img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
+/* Cartes : blocs d'information (une par organisation, par exemple) */
+.cartes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.carte {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+}
+
+.carte h3 {
+  margin-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  font-size: 1.2rem;
+  border-left: 4px solid var(--orange);
+}
+
+.carte p {
+  margin-bottom: 0;
+}
+
+/* ===========================================================
+   PIED DE PAGE
+   =========================================================== */
+.site-footer {
+  padding: 2.5rem clamp(1.25rem, 5vw, 4rem);
+  background: var(--vert-sombre);
+  border-top: 3px solid var(--orange);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.footer-links {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem 3rem;
+}
+
+.footer-links p {
+  line-height: 1.5;
+}
+
+.footer-apropos {
+  max-width: 42ch;
+  padding-left: 1rem;
+  border-left: 3px solid var(--orange);
+}
+
+.footer-apropos strong {
+  color: var(--blanc);
+}
+
+/* ===========================================================
+   MOBILE
+   =========================================================== */
+@media (max-width: 720px) {
+  .site-header {
+    padding-top: 6.5rem;
+  }
+
+  .site-header--compact {
+    padding-top: 5.5rem;
+  }
+}
+h1{
+  text-align: center;
+
+}
+
+.lien{
+  text-decoration: none;
+  color: white;
+}
+
+#carte{
+  height: 500px;
+  width: auto;
+}
