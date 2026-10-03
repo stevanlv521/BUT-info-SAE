@@ -130,7 +130,7 @@ popup.addEventListener("click", function (evenement) {
 
 // Page ouverte par chaque onglet (chemins depuis le dossier Index)
 var PAGES = {
-  1: '/Onglet1/onglet2.html',
+  1: 'onglet1/onglet1.html',
   2: '../Onglet2/Onglet_2.html',
   3: '../Onglet3/onglet3.html',
   4: '../Onglet4/Onglet4.html',
