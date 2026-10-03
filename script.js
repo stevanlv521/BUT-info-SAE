@@ -131,10 +131,10 @@ popup.addEventListener("click", function (evenement) {
 // Page ouverte par chaque onglet (chemins depuis le dossier Index)
 var PAGES = {
   1: 'onglet1/onglet1.html',
-  2: 'Onglet2/Onglet_2.html',
-  3: 'Onglet3/onglet3.html',
-  4: 'Onglet4/Onglet4.html',
-  5: 'Onglet5/onglet5.html'
+  2: 'onglet2/Onglet_2.html',
+  3: 'onglet3/onglet3.html',
+  4: 'onglet4/Onglet4.html',
+  5: 'onglet5/onglet5.html'
 };
 
 // Clic sur la carte du milieu → on ouvre la page
