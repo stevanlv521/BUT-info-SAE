@@ -23,6 +23,10 @@ body {
   font-family: "Bricolage Grotesque", system-ui, sans-serif;
   color: var(--blanc);
   background: var(--vert-foret);
+
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Anneau orange bien visible quand on navigue au clavier */
@@ -303,9 +307,6 @@ body {
   background: var(--vert-sombre);
   border-top: 3px solid var(--orange);
   color: rgba(255, 255, 255, 0.85);
-  position: fixed;
-  bottom: 0;
-  width: 100%;
 }
 
 .footer-links {
